@@ -56,19 +56,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     @apply(--layout-vertical);
   }
 
-  my-homepage {
+  searchbox-homepage {
     width: 100%;
     border-style: solid;
     border-width: 1px;
     line-height: inherit;
     border-color: #d2d6d9;
-    padding-left: 5%;
-    /*padding-right: 5%;*/
     padding-bottom: 10px;
     margin: auto;
   }
 
+  .homepage-input {
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    line-height: inherit;
+    border-color: #d2d6d9;
+    padding: 10px;
+    font-size: 16px;
+    margin: auto;
+  }
+
   .heroSection {
+    padding-top: 6%;
     font-stretch: normal;
     font-size: 46px;
     line-height: 50.6px;
@@ -108,48 +118,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   .logo {
-    height: 50px;
-    margin-bottom: -1.5%;
+    height: 60px;
+    margin-bottom: -15px;
   }
 
-  .searchBox {
-    width: 60%;
+  .searchIcon {
+    height: 72px;
+    width: 72px;
+    color: rgb(85, 85, 114);
   }
 
-  .footer-color {
-    float: left;
-    height: 288px;
-    width: 100%;
-    /*background: rgba(235, 235, 242, 0.3);*/
-    background: #ebebf2;
-    color: #2ec7a0;
+  #block_container
+  {
+    text-align:center;
   }
-  /* remove underline from hyperlinks*/
-  a:link {
-    text-decoration: none;
+  #bloc1, #bloc2
+  {
+    display:inline-block;
   }
-  a {
-    color: #2ec7a0;
+  #bloc1
+  {
+    width: 50%;
   }
-
-  .footerImage {
-    position: absolute;
-    top: 0px;
-    left: 32px;
-    right: 32px;
-    bottom: 0px;
-    margin: auto;
-    height: 192px;
+  #bloc2 {
+    /*margin-left: 17px;*/
   }
 
-  .needHelp {
-    margin-left: 32px;
-    vertical-align: middle;
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  /*styling for results page*/
+
+  paper-toolbar.paper-toolbar-0 {
+    background: white;
+    border:1px solid #d2d6d9;
   }
 
-  .space {
-    @apply(--layout-flex);
+  .companyName {
+    margin-right: 9px;
+    font-stretch: normal;
+    font-size: 36px;
+    line-height: 50.6px;
+    color: rgb(85, 85, 114);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -2.16px;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    ms-font-smoothing: antialiased;
   }
+
+  .topSearch {
+    flex-grow: 1; /* default 0 */
+    font-size: 20px;
+    height:80%;
+    border:0px;
+    font-size: 30px;
+  }
+
+  input.topSearch:focus {
+    outline-width: 0;
+  }
+
+  input.homepage-input:focus {
+    outline-width: 0;
+  }
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   #drawerToolbar {
     color: var(--secondary-text-color);
@@ -231,7 +264,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   /* Height of the scroll area */
   .content {
-    height: 900px;
+    /*height: 900px;*/
   }
 
   section[data-route="home"] paper-material {
@@ -247,7 +280,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     height: 100%;
     padding: 16px 0 16px 0;
     width: calc(98.66% - 16px);
-    margin: 16px auto;
+    /*margin: 16px auto;*/
     background: white;
   }
 
@@ -271,7 +304,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     paper-material {
-      --menu-container-display: none;
+      /*--menu-container-display: none;*/
       width: calc(97.33% - 32px);
       padding-left: 16px;
       padding-right: 16px;
@@ -287,7 +320,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     iron-pages {
-      padding: 48px 62px;
+      /*padding: 48px 62px;*/
     }
 
     paper-material {

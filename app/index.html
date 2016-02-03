@@ -1,13 +1,4 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 
 <html lang="en">
 
@@ -16,7 +7,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Polymer Starter Kit">
-  <title>Discode</title>
+  <title>Gitlinks</title>
 
   <!-- Place favicon.ico in the `app/` directory -->
 
@@ -57,141 +48,112 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <!-- For shared styles, shared-styles.html import in elements.html -->
   <style is="custom-style" include="shared-styles"></style>
+
+  <!-- import jQuery-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 
 <body unresolved>
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
 
-  <paper-drawer-panel id="paperDrawerPanel">
-    <!-- Drawer Scroll Header Panel -->
-    <paper-scroll-header-panel drawer fixed>
+  <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
 
-      <!-- Drawer Toolbar -->
-      <paper-toolbar id="drawerToolbar">
-        <span class="menu-name">Menu</span>
-      </paper-toolbar>
+    <!-- Main Content -->
+    <div class="content">
+      <iron-pages attr-for-selected="data-route" selected="{{route}}">
+        <section data-route="home">
+          <paper-material elevation="0">
 
-      <!-- Drawer Content -->
-      <paper-menu attr-for-selected="data-route" selected="[[route]]">
-        <a data-route="home" href="{{baseUrl}}">
-          <iron-icon icon="home"></iron-icon>
-          <span>Home</span>
-        </a>
+            <div class="center">
+              <p class="heroSection">
+                <img src="images/logo_mint.png" alt="GitLinks logo" class="logo">
+                GitLinks
+              </p>
+            </div>
 
-        <a data-route="users" href="{{baseUrl}}users">
-          <iron-icon icon="info"></iron-icon>
-          <span>Users</span>
-        </a>
+            <div id="block_container">
+              <p class="subheadSection center">
+                A smart search engine for open source projects.
+              </p>
 
-        <a data-route="contact" href="{{baseUrl}}contact">
-          <iron-icon icon="mail"></iron-icon>
-          <span>Contact</span>
-        </a>
-      </paper-menu>
-    </paper-scroll-header-panel>
+              <div id="bloc1">
+                <!--<searchbox-homepage id="mainSearch"-->
+                <!--type="search"-->
+                <!--placeholder="... what are you looking for?">-->
+                <!--</searchbox-homepage>-->
+                <input id="mainSearch"
+                       class="homepage-input"
+                       type="search"
+                       autocomplete="off"
+                       placeholder="What are you looking for?"
+                       value="{{inputValue::input}}"
+                >
 
-    <!-- Main Area -->
-    <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-      <!-- Main Toolbar -->
-      <paper-toolbar id="mainToolbar" class="tall">
-        <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-
-        <span class="space"></span>
-
-        <!-- Toolbar icons -->
-        <paper-icon-button icon="refresh"></paper-icon-button>
-        <paper-icon-button icon="search"></paper-icon-button>
-
-        <!-- Application name -->
-        <div class="middle middle-container">
-          <div class="app-name">GitLinks</div>
-        </div>
-
-        <!-- Application sub title -->
-        <div class="bottom bottom-container">
-          <div class="bottom-title">discover the right code</div>
-        </div>
-      </paper-toolbar>
-
-      <!-- Main Content -->
-      <div class="content">
-        <iron-pages attr-for-selected="data-route" selected="{{route}}">
-          <section data-route="home">
-            <paper-material elevation="0">
-
-              <div class="center">
-                <p class="heroSection">
-                  <img src="images/logo_mint.png" alt="GitLinks logo" class="logo">
-                  GitLinks
-                </p>
+                <!--route to search results page-->
+                <script>
+                  $(".homepage-input").keydown(function () {
+                    page('{{baseUrl}}users');
+                  });
+                </script>
               </div>
+              <!--<div id="bloc2">-->
+              <!--<a data-route="users" href="{{baseUrl}}users">-->
+              <!--<paper-icon-button class="searchIcon" icon="search"></paper-icon-button>-->
+              <!--</a>-->
+              <!--</div>-->
+            </div>
+          </paper-material>
 
-              <div class="center">
-                <p class="subheadSection center">
-                  Smart search engine for open source projects.
-                </p>
-                <my-homepage class="searchBox" type="search" label="WHAT ARE YOU LOOKING FOR?"></my-homepage>
-              </div>
-              <!--<my-greeting></my-greeting>-->
+          <my-footer></my-footer>
+        </section>
 
-              <!--<p class="subhead">You now have:</p>-->
-              <!--<my-list></my-list>-->
+        <section data-route="users">
+          <paper-toolbar class="scroll contain">
+            <p class="companyName">
+              GitLinks
+            </p>
+            <input class="topSearch"
+                   type="search"
+                   autocomplete="off"
+                   autofocus>
+            <a data-route="users" href="{{baseUrl}}users" tabindex="-1">
+              <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
+            </a>
+          </paper-toolbar>
+          <paper-material elevation="0">
+            <h2 class="page-title">Stub stub stub</h2>
+            <p>Work in progress</p>
+            <a href$="{{baseUrl}}users/Addy">Lorem ipsum dolor sit amet</a><br>
+            <a href$="{{baseUrl}}users/Rob">consectetur adipiscing elit</a><br>
+            <a href$="{{baseUrl}}users/Chuck">In gravida arcu nec elementum iaculis</a><br>
+            <a href$="{{baseUrl}}users/Sam">Fusce at odio at purus </a>
+          </paper-material>
+          <my-footer></my-footer>
+        </section>
 
-              <!--<p>Looking for more Web App layouts? Check out our <a-->
-              <!--href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a-->
-              <!--href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>-->
-              <!--</paper-material>-->
 
-              <!--<paper-material elevation="1">-->
-              <!--<p>This is another card.</p>-->
-            </paper-material>
 
-            <paper-material class="footer-color" elevation="0">
-              <div class="container">
-                <img src="images/header/openSourceIllustration.svg" alt="Parse open source illustration"
-                     class="footerImage">
-                <div class="needHelp">
-                  <h5>Need Help?</h5>
-                  <p><a style="color: #2ec7a0;" href="" target="_blank">About</a></p>
-                  <p><a href="" target="_blank">Contact Us</a></p>
-                  <p><a href="" target="_blank">Contribute</a></p>
-                  <p><a href="" target="_blank">Get the Newsletter</a></p>
+        <section data-route="user-info">
+          <paper-material elevation="1">
+            <h2 class="page-title">User: {{params.name}}</h2>
+            <div>This is {{params.name}}'s section</div>
+          </paper-material>
 
-                </div>
-              </div>
-            </paper-material>
+        </section>
 
-          </section>
 
-          <section data-route="users">
-            <paper-material elevation="1">
-              <h2 class="page-title">Users</h2>
-              <p>This is the users section</p>
-              <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-              <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-              <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-              <a href$="{{baseUrl}}users/Sam">Sam</a>
-            </paper-material>
-          </section>
+        <section data-route="contact">
+          <paper-material elevation="1">
+            <h2 class="page-title">Contact</h2>
+            <p>This is the contact section</p>
+          </paper-material>
+        </section>
+      </iron-pages>
+    </div>
+  </paper-scroll-header-panel>
 
-          <section data-route="user-info">
-            <paper-material elevation="1">
-              <h2 class="page-title">User: {{params.name}}</h2>
-              <div>This is {{params.name}}'s section</div>
-            </paper-material>
-          </section>
-
-          <section data-route="contact">
-            <paper-material elevation="1">
-              <h2 class="page-title">Contact</h2>
-              <p>This is the contact section</p>
-            </paper-material>
-          </section>
-        </iron-pages>
-      </div>
-    </paper-scroll-header-panel>
-  </paper-drawer-panel>
 
   <paper-toast id="toast">
     <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
