@@ -1,0 +1,353 @@
+<!--
+play around with css animations
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+
+<dom-module id="my-animation">
+  <template>
+    <style>
+
+      .headerIllustration {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        pointer-events: none; }
+      .headerIllustration .skyline {
+        height: 100%; }
+      .headerIllustration .illustrationForeground {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        overflow: visible; }
+      .headerIllustration svg, .headerIllustration img, .headerIllustration .headerLeft, .headerIllustration .headerCenter, .headerIllustration .headerRight {
+        height: 100%;
+        position: absolute;
+        bottom: 0px;
+        overflow: visible; }
+      .headerIllustration .headerLeft {
+        left: -4%; }
+      .headerIllustration .headerLeftContainer {
+        width: 50.875vh; }
+      .headerIllustration .headerLeftContainer .craneLineContainer {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 46.5625%;
+        overflow: hidden; }
+      .headerIllustration .headerLeftContainer .craneLineContainer .craneLine {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 214.76510067%;
+        transform: translateY(-25%); }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer {
+        position: absolute;
+        background: #555574;
+        left: 50.9090909091%;
+        width: 20.1136363636%;
+        height: 24.21875%;
+        bottom: 3.28125%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appSquare {
+        position: absolute;
+        width: 24.8587570621%;
+        height: 14.1935483871%;
+        top: 56.1290322581%;
+        background: #DB3B61;
+        border-radius: 20%;
+        transform: scale(0.45);
+        transform-origin: 50% 50%;
+        transform: rotateZ(90deg) scale(0.45);
+        opacity: 0; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appSquare.one {
+        left: 6.7796610169%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appSquare.two {
+        left: 37.2881355932%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appSquare.three {
+        left: 67.7966101695%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appRect {
+        transform: scale(0.45);
+        transform-origin: 50% 50%;
+        transform: rotateZ(90deg) scale(0.45);
+        opacity: 0;
+        background: #DB3B61;
+        position: absolute;
+        left: 6.7796610169%;
+        width: 85.8757062147%;
+        height: 4.8387096774%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appRect.one {
+        top: 74.1935483871%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appRect.two {
+        top: 82.2580645161%; }
+      .headerIllustration .headerLeftContainer .phone1ScreenContainer .appRect.three {
+        top: 90.3225806452%; }
+      .headerIllustration .headerCenter {
+        left: 0px;
+        right: 0px;
+        margin: auto; }
+      .headerIllustration .headerCenter .middleLineOne {
+        transform: translateY(-100%); }
+      @media screen and (max-aspect-ratio: 8 / 5) and (max-width: 1480px) {
+        .headerIllustration .headerCenter {
+          opacity: 0; } }
+      @media screen and (max-width: 600px) {
+        .headerIllustration .headerCenter {
+          opacity: 0; } }
+      .headerIllustration .headerCenterContainer {
+        width: 41.625vh; }
+      .headerIllustration .headerCenterContainer .pushOne {
+        position: absolute;
+        left: 6.9444444444%;
+        bottom: 6.71875%;
+        height: auto;
+        width: 15.5555555556%;
+        transform-origin: 25% 0%; }
+      .headerIllustration .headerCenterContainer .middleLineOne {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        width: 100%;
+        height: 150%; }
+      .headerIllustration .headerRight {
+        right: -4%; }
+      .headerIllustration .headerRight .st1 {
+        fill: #3A3A59; }
+      .headerIllustration .headerRight .st2 {
+        fill: #0E69A1; }
+      .headerIllustration .headerRight .st6 {
+        fill: #555574; }
+      .headerIllustration .headerRight .st7 {
+        fill: #4BBC6E; }
+      .headerIllustration .headerRight .st8 {
+        fill: #EF3F61; }
+      .headerIllustration .headerRight .st9 {
+        fill: none;
+        stroke: #3A3A59;
+        stroke-width: 16;
+        stroke-linecap: round;
+        stroke-miterlimit: 10; }
+      .headerIllustration .headerRight .st10 {
+        fill: none;
+        stroke: #0E69A1;
+        stroke-width: 8;
+        stroke-miterlimit: 10; }
+      .headerIllustration .headerRight .st11 {
+        fill: #159CEE; }
+      .headerIllustration .headerRight .st13 {
+        fill: none;
+        stroke: #169CEE;
+        stroke-width: 8;
+        stroke-miterlimit: 10; }
+      .headerIllustration .headerRightContainer {
+        width: 56.425vh; }
+      .headerIllustration .headerRightContainer .svgInner {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%; }
+      .headerIllustration .headerRightContainer .wheelsContainer {
+        transform: translateX(100%); }
+      .headerIllustration .headerRightContainer .hoist {
+        transform: translateX(100%); }
+      .headerIllustration .headerRightContainer .hoistParts {
+        transform: translateX(100%); }
+      .headerIllustration .headerRightContainer .hoistWheel {
+        position: absolute;
+        width: 3.7909836066%;
+        height: 2.890625%;
+        bottom: 1.25%; }
+      .headerIllustration .headerRightContainer .hoistWheel:nth-of-type(1) {
+        right: 1.71875%; }
+      .headerIllustration .headerRightContainer .hoistWheel:nth-of-type(2) {
+        right: 8.90625%; }
+      .headerIllustration .headerRightContainer .hoistWheel:nth-of-type(3) {
+        right: 16.09375%; }
+      .headerIllustration .headerRightContainer .hoistWheel:nth-of-type(4) {
+        right: 23.28125%; }
+      .headerIllustration .headerRightContainer .hoistWheel:nth-of-type(5) {
+        right: 30.46875%; }
+      .headerIllustration .headerRightContainer .phoneCircle {
+        position: absolute;
+        border-radius: 50%; }
+      .headerIllustration .headerRightContainer .phone2Screen {
+        position: absolute;
+        left: 20.2868852459%;
+        bottom: 4.921875%;
+        width: 22.9508196721%;
+        height: 29.53125%;
+        background: #555574;
+        overflow: hidden; }
+      .headerIllustration .headerRightContainer .phone2Screen .phoneCircle {
+        left: -70%;
+        right: -70%;
+        width: 240%;
+        padding-bottom: 50%;
+        top: -25%;
+        bottom: -25%;
+        background: #4BBC6E;
+        transform: scale(0); }
+      .headerIllustration .headerRightContainer .phone3Screen {
+        position: absolute;
+        left: 37.9098360656%;
+        bottom: 5.234375%;
+        width: 22.131147541%;
+        height: 22.65625%;
+        background: #3A3A59;
+        overflow: hidden; }
+      .headerIllustration .headerRightContainer .phone3Screen .phoneCircle {
+        left: -50%;
+        right: -50%;
+        width: 200%;
+        padding-bottom: 50%;
+        top: -25%;
+        bottom: -25%;
+        background: #555574;
+        transform: scale(0); }
+      @media screen and (max-width: 960px), (min-width: 960px) and (max-aspect-ratio: 4 / 3) {
+        .headerIllustration > svg, .headerIllustration > img, .headerIllustration > div {
+          transform: scale(0.75);
+          transform-origin: center bottom; }
+        .headerIllustration > .skyline {
+          transform: scale(1);
+          height: 75%; }
+        .headerIllustration .headerLeft {
+          left: -24%; }
+        .headerIllustration .headerRight {
+          right: -20%; } }
+      @media screen and (min-width: 1480px) {
+        .headerIllustration .headerLeft {
+          left: -15%; }
+        .headerIllustration .headerRight {
+          right: -18%; }
+        .headerIllustration .headerLeft, .headerIllustration .headerRight, .headerIllustration .headerCenter {
+          transform: scale(0.75);
+          transform-origin: center bottom; } }
+      @media screen and (max-aspect-ratio: 5 / 8) and (min-width: 720px) {
+        .headerIllustration .headerLeft {
+          left: -36%; }
+        .headerIllustration .headerRight {
+          right: -32%; }
+        .headerIllustration .headerCenter {
+          opacity: 0; } }
+
+    </style>
+
+    <div class="headerIllustration">
+      <div class="skyline" style="width: 100%; position: absolute; bottom: 0px; left: 0px; transform: translateY(0px); background: url(&quot;img/header/skyline.svg&quot;) 50% 100% / auto 100% repeat-x;"></div>
+      <div class="illustrationForeground">
+        <!--right animations-->
+        <img src="rightBackground.svg" alt="" class="headerRight">
+        <div class="headerRight headerRightContainer" style="width: 243px;">
+          <div class="phone2Screen" style="background-color: rgb(75, 188, 110);">
+            <div class="phoneCircle" style="transform: scale(1);"></div>
+          </div>
+        </div>
+        <img src="rightBackground2.svg" alt="" class="headerRight">
+        <div class="headerRight headerRightContainer" style="width: 243px;">
+          <div class="phone3Screen" style="background-color: rgb(85, 85, 116);">
+            <div class="phoneCircle" style="transform: scale(1);"></div>
+          </div>
+          <svg version="1.1" class="svgInner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-111 -584 976 1280" style="enable-background:new -111 -584 976 1280;" xml:space="preserve">
+                            <svg class="push2" y="0">
+                                <path class="st7" d="M228.8,451.8c-19.1,0-34.6-15.5-34.6-34.6c0-3.4,0.5-6.8,1.5-9.9H162c-10.4,0-18.8,8.4-18.8,18.8v55.1
+                                        c0,10.4,8.4,18.8,18.8,18.8h55c10.4,0,18.8-8.4,18.8-18.8V451C233.5,451.5,231.2,451.8,228.8,451.8z" style="fill: rgb(64, 160, 91);"></path>
+                                <path class="st7" d="M228.8,390.9c-14.5,0-26.3,11.8-26.3,26.3s11.8,26.3,26.3,26.3s26.3-11.8,26.3-26.3
+                                    C255.1,402.7,243.3,390.9,228.8,390.9z M228.8,431.2c-7.7,0-14-6.3-14-14s6.3-14,14-14s14,6.3,14,14S236.5,431.2,228.8,431.2z" style="fill: rgb(64, 160, 91);"></path>
+                            </svg>
+                        </svg>
+        </div>
+        <div class="headerRight headerRightContainer" style="width: 243px;">
+          <svg version="1.1" class="svgInner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-111 -584 976 1280" style="enable-background:new -111 -584 976 1280;" xml:space="preserve">
+                            <svg class="middleLine2" y="-125%">
+                                <line class="st9" x1="176.9" y1="410.5" x2="176.9" y2="390.5"></line>
+                                <line class="st10" x1="176.9" y1="343.2" x2="176.9" y2="-1300"></line>
+                                <line class="st10" x1="176.9" y1="351.4" x2="176.9" y2="392"></line>
+                                <path class="st1" d="M192.2,344.9l-10.9,18.8c-2,3.4-6.9,3.4-8.9,0l-10.9-18.8c-2-3.4,0.5-7.7,4.4-7.7h21.8
+                                    C191.8,337.2,194.2,341.5,192.2,344.9z"></path>
+                                <path class="st1" d="M186.1,383.8h-18.3c-2.2,0-4,1.8-4,4v8.4c0,2.2,1.8,4,4,4h18.3c2.2,0,4-1.8,4-4v-8.4
+                                    C190.1,385.6,188.3,383.8,186.1,383.8z"></path>
+                                <circle class="st11" cx="176.9" cy="360" r="2.8"></circle>
+                                <circle class="st11" cx="168.7" cy="343.5" r="2.8"></circle>
+                                <circle class="st11" cx="185.2" cy="343.5" r="2.8"></circle>
+                            </svg>
+                        </svg>
+        </div>
+        <div class="headerRight headerRightContainer hoistParts" style="transform: scale(0.75) translateX(0px); width: 243px;">
+          <svg version="1.1" class="svgInner" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-111 -584 976 1280" style="enable-background:new -111 -584 976 1280;" xml:space="preserve">
+                            <svg y="0px" class="hoist" style="transform: scale(0.75) translateX(0px);">
+                                <g class="analytics">
+                                    <path class="st6" d="M367.4,427.6c-30.9,0-56,25.1-56,56s25.1,56,56,56s56-25.1,56-56C423.4,452.8,398.3,427.6,367.4,427.6z
+                                         M367.4,436.7c25.3,0,45.9,20.1,46.9,45.1h-10.7l-18.2-22.5l-26.2,31.2L340,469.6l-10.8,10.8h-8.7
+                                        C322.3,456,342.7,436.7,367.4,436.7z M367.4,530.6c-24.5,0-44.7-18.9-46.8-43h11.6l7.5-7.5l19.6,21.5l25.8-30.8l14.9,18.4h13.9
+                                        C411.3,512.4,391.5,530.6,367.4,530.6z" style="fill: rgb(58, 58, 89);"></path>
+                                </g>
+                                <defs>
+                                    <clipPath id="hoistMask">
+                                        <rect x="320.6" y="24.6" width="93.7" height="412.1"></rect>
+                                    </clipPath>
+                                </defs>
+                                <g class="hoistLine st12" clip-path="url(#hoistMask)">
+                                    <svg class="hoistLineInner" y="-22%">
+                                        <g>
+                                            <line class="st13" x1="366.8" y1="24.6" x2="366.8" y2="427.3"></line>
+                                            <circle class="st2" cx="367.1" cy="428.3" r="6"></circle>
+                                        </g>
+                                    </svg>
+                                </g>
+                            </svg>
+                        </svg>
+        </div>
+        <img src="hoist.svg" alt="" class="headerRight hoist" style="transform: scale(0.75) translateX(0px);">
+        <div class="headerRight headerRightContainer wheelsContainer" style="transform: scale(0.75) translateX(0px); width: 243px;">
+          <img src="hoistWheel.svg" alt="" class="hoistWheel" style="transform: rotateZ(-720deg);">
+          <img src="hoistWheel.svg" alt="" class="hoistWheel" style="transform: rotateZ(-720deg);">
+          <img src="hoistWheel.svg" alt="" class="hoistWheel" style="transform: rotateZ(-720deg);">
+          <img src="hoistWheel.svg" alt="" class="hoistWheel" style="transform: rotateZ(-720deg);">
+          <img src="hoistWheel.svg" alt="" class="hoistWheel" style="transform: rotateZ(-720deg);">
+        </div>
+
+        <!-- left side animations -->
+        <img src="craneBackground.svg" alt="" class="headerLeft">
+        <div class="headerLeft headerLeftContainer" style="width: 219px;">
+          <div class="phone1ScreenContainer" style="background-color: rgb(239, 63, 97);">
+            <div class="appSquare one" style="opacity: 1; transform: scale(1) rotateZ(0deg) translateY(0px);"></div>
+            <div class="appSquare two" style="opacity: 1; transform: scale(1) rotateZ(0deg) translateY(0px);"></div>
+            <div class="appSquare three" style="opacity: 1; transform: scale(1) rotateZ(0deg) translateY(0px);"></div>
+            <div class="appRect one" style="opacity: 1; transform: scale(1) translateY(0px) rotateZ(0deg);"></div>
+            <div class="appRect two" style="opacity: 1; transform: scale(1) translateY(0px) rotateZ(0deg);"></div>
+            <div class="appRect three" style="opacity: 1; transform: scale(1) translateY(0px) rotateZ(0deg);"></div>
+          </div>
+          <img src="video.svg" alt="" class="craneVideo" style="transform: translateY(-14.8%) translateX(13.4%);">
+          <div class="craneLineContainer">
+            <img src="craneLine.svg" class="craneLine" alt="" style="transform: translateY(-30%) translateX(13%);">
+          </div>
+          <img src="cranePivot.svg" alt="" class="cranePivot" style="transform: translateX(13%);">
+        </div>
+
+        <!--center animations-->
+        <img src="truckBackground.svg" alt="" class="headerCenter">
+        <div class="headerCenter headerCenterContainer" style="width: 179px;">
+          <img src="pushOne.svg" alt="" class="pushOne" style="transform: translateY(-1764.58%) rotateZ(12deg);">
+          <img src="middleLine.svg" alt="" class="middleLineOne" style="transform: translateY(-100%);">
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: "my-animation"
+    });
+  </script>
+</dom-module>

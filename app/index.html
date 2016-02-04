@@ -93,8 +93,11 @@
 
                 <!--route to search results page-->
                 <script>
-                  $(".homepage-input").keydown(function () {
-                    page('{{baseUrl}}users');
+                  $(".homepage-input").keydown(function (event) {
+                    // record the key
+                    var theKey = event.which;
+
+                    page('{{baseUrl}}results');
                   });
                 </script>
               </div>
@@ -109,7 +112,7 @@
           <my-footer></my-footer>
         </section>
 
-        <section data-route="users">
+        <section data-route="results">
           <paper-toolbar class="scroll contain">
             <p class="companyName">
               GitLinks
@@ -118,7 +121,7 @@
                    type="search"
                    autocomplete="off"
                    autofocus>
-            <a data-route="users" href="{{baseUrl}}users" tabindex="-1">
+            <a data-route="results" href="{{baseUrl}}results" tabindex="-1">
               <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
             </a>
           </paper-toolbar>
@@ -149,6 +152,7 @@
             <h2 class="page-title">Contact</h2>
             <p>This is the contact section</p>
           </paper-material>
+          <my-animation></my-animation>
         </section>
       </iron-pages>
     </div>
