@@ -64,7 +64,7 @@
     <div class="content">
       <iron-pages attr-for-selected="data-route" selected="{{route}}">
         <section data-route="home">
-          <paper-material elevation="0">
+          <paper-material style="height: 700px" elevation="0">
 
             <div class="center">
               <p class="heroSection">
@@ -78,34 +78,31 @@
             </div>
 
             <div id="block_container">
-
-
+            <!--<div style="height: 350px" id="block_container">-->
               <div id="bloc1">
                 <input id="mainSearch"
                        class="homepage-input"
                        type="search"
                        autocomplete="off"
                        placeholder="What are you looking for?">
+                Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"
 
                 <!--route to search results page-->
                 <script>
                   $(".homepage-input").keydown(function (event) {
                     // record the key
                     var theKey = event.which;
-
                     page('{{baseUrl}}results');
                   });
                 </script>
               </div>
-              <!--<div id="bloc2">-->
-              <!--<a data-route="users" href="{{baseUrl}}users">-->
-              <!--<paper-icon-button class="searchIcon" icon="search"></paper-icon-button>-->
-              <!--</a>-->
-              <!--</div>-->
             </div>
             <my-animation></my-animation>
-
           </paper-material>
+
+
+          <!--<my-animation></my-animation>-->
+
           <my-footer></my-footer>
         </section>
 
