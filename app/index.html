@@ -71,25 +71,21 @@
                 <img src="images/logo_mint.png" alt="GitLinks logo" class="logo">
                 GitLinks
               </p>
-            </div>
 
-            <div id="block_container">
               <p class="subheadSection center">
                 A smart search engine for open source projects.
               </p>
+            </div>
+
+            <div id="block_container">
+
 
               <div id="bloc1">
-                <!--<searchbox-homepage id="mainSearch"-->
-                <!--type="search"-->
-                <!--placeholder="... what are you looking for?">-->
-                <!--</searchbox-homepage>-->
                 <input id="mainSearch"
                        class="homepage-input"
                        type="search"
                        autocomplete="off"
-                       placeholder="What are you looking for?"
-                       value="{{inputValue::input}}"
-                >
+                       placeholder="What are you looking for?">
 
                 <!--route to search results page-->
                 <script>
@@ -107,8 +103,9 @@
               <!--</a>-->
               <!--</div>-->
             </div>
-          </paper-material>
+            <my-animation></my-animation>
 
+          </paper-material>
           <my-footer></my-footer>
         </section>
 
@@ -147,12 +144,14 @@
         </section>
 
 
-        <section data-route="contact">
+        <section data-route="animation">
           <paper-material elevation="1">
-            <h2 class="page-title">Contact</h2>
+            <h2 class="page-title">Animation</h2>
             <p>This is the contact section</p>
+
+            <my-animation></my-animation>
+
           </paper-material>
-          <my-animation></my-animation>
         </section>
       </iron-pages>
     </div>
@@ -186,6 +185,7 @@
 <!-- build:js scripts/app.js -->
 <script src="scripts/app.js"></script>
 <!-- endbuild-->
+<script src="scripts/velocity.min.js"></script>
 </body>
 
 </html>
