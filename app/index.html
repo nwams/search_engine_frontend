@@ -64,46 +64,39 @@
     <div class="content">
       <iron-pages attr-for-selected="data-route" selected="{{route}}">
         <section data-route="home">
-          <paper-material style="height: 700px" elevation="0">
-
+          <paper-toolbar class="scroll contain paper-toolbar-home">
+            <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
+            <p class="specialText">GitLinks</p>
+          </paper-toolbar>
+          <paper-material style="height: 645px" elevation="0">
             <div class="center">
-              <p class="heroSection">
-                <img src="images/logo_mint.png" alt="GitLinks logo" class="logo">
-                GitLinks
-              </p>
-
-              <p class="subheadSection center">
+              <!--<p class="heroSection">-->
+              <!--<img src="images/logo_mint.png" alt="GitLinks logo" class="logo">-->
+              <!--GitLinks-->
+              <!--</p>-->
+              <p style="padding-top: 10%;" class="subheadSection center">
                 A smart search engine for open source projects.
               </p>
             </div>
 
             <div id="block_container">
-            <!--<div style="height: 350px" id="block_container">-->
-              <div id="bloc1">
-                <input id="mainSearch"
-                       class="homepage-input"
-                       type="search"
-                       autocomplete="off"
-                       placeholder="What are you looking for?">
+                <paper-input style="margin: 0 10%; font-size: 26px;" placeholder="What are you looking for?" id="homeSearch" autofocus>
+                </paper-input>
                 Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"
-
                 <!--route to search results page-->
                 <script>
-                  $(".homepage-input").keydown(function (event) {
+                  $("#homeSearch").keydown(function (event) {
                     // record the key
                     var theKey = event.which;
                     page('{{baseUrl}}results');
                   });
                 </script>
-              </div>
             </div>
             <my-animation></my-animation>
           </paper-material>
-
-
-          <!--<my-animation></my-animation>-->
-
-          <my-footer></my-footer>
+          <div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">
+            <my-footer></my-footer>
+          </div>
         </section>
 
         <section data-route="results">
@@ -129,7 +122,6 @@
           </paper-material>
           <my-footer></my-footer>
         </section>
-
 
 
         <section data-route="user-info">
