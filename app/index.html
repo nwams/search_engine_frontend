@@ -50,7 +50,7 @@
   <style is="custom-style" include="shared-styles"></style>
 
   <!-- import jQuery-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 
@@ -65,32 +65,33 @@
       <iron-pages attr-for-selected="data-route" selected="{{route}}">
         <section data-route="home">
           <paper-toolbar class="scroll contain paper-toolbar-home">
-            <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
-            <p class="specialText">GitLinks</p>
+            <a data-route="home" href="{{baseUrl}}home">
+              <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
+            </a>
+            <a data-route="home" href="{{baseUrl}}home">
+              <p class="specialText">GitLinks</p>
+            </a>
           </paper-toolbar>
           <paper-material style="height: 645px" elevation="0">
             <div class="center">
-              <!--<p class="heroSection">-->
-              <!--<img src="images/logo_mint.png" alt="GitLinks logo" class="logo">-->
-              <!--GitLinks-->
-              <!--</p>-->
               <p style="padding-top: 10%;" class="subheadSection center">
                 A smart search engine for open source projects.
               </p>
             </div>
 
             <div id="block_container">
-                <paper-input style="margin: 0 10%; font-size: 26px;" placeholder="What are you looking for?" id="homeSearch" autofocus>
-                </paper-input>
-                Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"
-                <!--route to search results page-->
-                <script>
-                  $("#homeSearch").keydown(function (event) {
-                    // record the key
-                    var theKey = event.which;
-                    page('{{baseUrl}}results');
-                  });
-                </script>
+              <paper-input style="margin: 0 10%; font-size: 26px;" placeholder="What are you looking for?"
+                           id="homeSearch" autofocus>
+              </paper-input>
+              Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"
+              <!--route to search results page-->
+              <script>
+                $("#homeSearch").keydown(function (event) {
+                  // record the key
+                  var theKey = event.which;
+                  page('{{baseUrl}}results');
+                });
+              </script>
             </div>
             <my-animation></my-animation>
           </paper-material>
@@ -99,15 +100,109 @@
           </div>
         </section>
 
+        <section data-route="working-on-it">
+          <style is="custom-style">
+            paper-toolbar.coolblue {
+              --paper-toolbar-background: #169cee;
+              --paper-toolbar-title: {
+                font-style: italic;
+                font-weight: bold;
+              };
+            }
+          </style>
+          <paper-toolbar class="medium-tall coolblue scroll contain" style="padding-top: 30px">
+
+            <a data-route="home" href="{{baseUrl}}home">
+              <img src="images/logo_white.png" alt="GitLinks logo" class="headerLogo">
+            </a>
+            <a data-route="home" href="{{baseUrl}}home">
+              <p class="specialText" style="color: #fff;">GitLinks</p>
+            </a>
+          </paper-toolbar>
+
+          <paper-material elevation="5">
+
+            <div class="centerContainer">
+              <div>
+                <paper-material elevation="1">
+                  <style is="custom-style">
+                    paper-card.white {
+                      --paper-card-header-color: #fff;
+                    }
+
+                    paper-card:hover {
+                      @apply(--shadow-elevation-12dp);
+                      cursor: pointer;
+                    }
+
+                    paper-button.green {
+                      background-color: #00db7c;
+                      /*background-color: var(--paper-green-a400);;*/
+                      color: white;
+                    }
+
+                    input.borders {
+                      /*border: 0;*/
+                      border-left: 1px solid #dbdbdb;
+                      border-top: 1px solid #dbdbdb;
+                      border-right: 1px solid #dbdbdb;
+                      border-top-left-radius: 5px;
+                      border-top-right-radius: 5px;
+                    }
+                  </style>
+
+                  <div style="width: 338px">
+                    <p style="text-align: center">We are working around the clock to bring you a phenomenal open source
+                      search engine!
+                      <br><br>How excited are you to use our service?
+                    </p>
+                    <div class="centerContainer">
+                      <paper-card elevation="2" class="white" style="margin-right:4px; width: 100%">
+                        <div class="centerContainer"><img src="images/emoji/smiling.png"></div>
+                        <p style="text-align: center">I cant't wait</p>
+                      </paper-card>
+                      <paper-card elevation="2" class="white" style="margin-left:4px; width: 100%">
+                        <div class="centerContainer"><img src="images/emoji/thinking.png"></div>
+                        <p style="text-align: center">I'm kind of <br>interested</p>
+                      </paper-card>
+                    </div>
+                  </div>
+                  <div style="line-height: 30px;"></div>
+                  <div style="margin-top: 15px">
+                    <div class="layout vertical">
+                      <div><input class="borders" style="width: 100%; height: 41px; outline: none; font-size: 14px"
+                                  placeholder="email address"></div>
+                      <div>
+                        <paper-button style="width: 100%" class="custom green" toggles raised>Let me know when it's ready</paper-button>
+                      </div>
+                    </div>
+                  </div>
+
+                </paper-material>
+              </div>
+
+            </div>
+
+
+          </paper-material>
+          <my-footer></my-footer>
+        </section>
+
         <section data-route="results">
           <paper-toolbar class="scroll contain">
-            <p class="companyName">
-              GitLinks
-            </p>
+            <a data-route="home" href="{{baseUrl}}home">
+              <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
+            </a>
+            <a data-route="home" href="{{baseUrl}}home">
+              <p class="specialText">GitLinks</p>
+            </a>
+            <!--<p class="companyName">-->
+            <!--GitLinks-->
+            <!--</p>-->
             <input class="topSearch"
                    type="search"
                    autocomplete="off"
-                   autofocus>
+                   autofocus/>
             <a data-route="results" href="{{baseUrl}}results" tabindex="-1">
               <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
             </a>
@@ -171,10 +266,10 @@
 
 </template>
 
-<!-- build:js scripts/app.js -->
+<!--build:js scripts/app.js-->
 <script src="scripts/app.js"></script>
-<!-- endbuild-->
 <script src="scripts/velocity.min.js"></script>
+<!-- endbuild-->
 </body>
 
 </html>
