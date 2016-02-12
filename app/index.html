@@ -64,7 +64,7 @@
     <div class="content">
       <iron-pages attr-for-selected="data-route" selected="{{route}}">
         <section data-route="home">
-          <paper-toolbar class="scroll contain paper-toolbar-home">
+          <paper-toolbar class="medium-tall scroll contain paper-toolbar-home">
             <a data-route="home" href="{{baseUrl}}home">
               <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
             </a>
@@ -72,28 +72,36 @@
               <p class="specialText">GitLinks</p>
             </a>
           </paper-toolbar>
-          <paper-material style="height: 645px" elevation="0">
+          <div elevation="0">
             <div class="center">
               <p style="padding-top: 10%;" class="subheadSection center">
                 A smart search engine for open source projects.
               </p>
             </div>
 
+            <div style="flex-direction: column;">
             <div id="block_container">
-              <paper-input style="margin: 0 10%; font-size: 26px;" placeholder="What are you looking for?"
-                           id="homeSearch" autofocus>
-              </paper-input>
-              Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"
+                <paper-input style="width: 100%;"
+                             placeholder="What are you looking for?"
+                             id="homeSearch" autofocus>
+                </paper-input>
+                <a data-route="results" href="{{baseUrl}}results" tabindex="-1">
+                  <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
+                </a>
               <!--route to search results page-->
-              <script>
-                $("#homeSearch").keydown(function (event) {
-                  // record the key
-                  var theKey = event.which;
-                  page('{{baseUrl}}results');
-                });
-              </script>
+              <!--<script>-->
+                <!--$("#homeSearch").keydown(function (event) {-->
+                  <!--// record the key-->
+                  <!--var theKey = event.which;-->
+                  <!--page('{{baseUrl}}results');-->
+                <!--});-->
+              <!--</script>-->
             </div>
-            <my-animation></my-animation>
+            <div>
+              <p style="text-align: center">Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"</p>
+            </div>
+            </div>
+
           </paper-material>
           <div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">
             <my-footer></my-footer>
@@ -120,7 +128,7 @@
             </a>
           </paper-toolbar>
 
-          <paper-material elevation="5">
+          <paper-material elevation="0">
 
             <div class="centerContainer">
               <div>
@@ -130,7 +138,7 @@
                       --paper-card-header-color: #fff;
                     }
 
-                    paper-card:hover {
+                    .paper-card-button:hover {
                       @apply(--shadow-elevation-12dp);
                       cursor: pointer;
                     }
@@ -139,6 +147,7 @@
                       background-color: #00db7c;
                       /*background-color: var(--paper-green-a400);;*/
                       color: white;
+                      margin: 0 0;
                     }
 
                     input.borders {
@@ -150,34 +159,98 @@
                       border-top-right-radius: 5px;
                     }
                   </style>
+                  <form id="foo">
 
-                  <div style="width: 338px">
-                    <p style="text-align: center">We are working around the clock to bring you a phenomenal open source
-                      search engine!
-                      <br><br>How excited are you to use our service?
-                    </p>
-                    <div class="centerContainer">
-                      <paper-card elevation="2" class="white" style="margin-right:4px; width: 100%">
-                        <div class="centerContainer"><img src="images/emoji/smiling.png"></div>
-                        <p style="text-align: center">I cant't wait</p>
-                      </paper-card>
-                      <paper-card elevation="2" class="white" style="margin-left:4px; width: 100%">
-                        <div class="centerContainer"><img src="images/emoji/thinking.png"></div>
-                        <p style="text-align: center">I'm kind of <br>interested</p>
-                      </paper-card>
-                    </div>
-                  </div>
-                  <div style="line-height: 30px;"></div>
-                  <div style="margin-top: 15px">
-                    <div class="layout vertical">
-                      <div><input class="borders" style="width: 100%; height: 41px; outline: none; font-size: 14px"
-                                  placeholder="email address"></div>
-                      <div>
-                        <paper-button style="width: 100%" class="custom green" toggles raised>Let me know when it's ready</paper-button>
+                    <div style="width: 338px">
+                      <p style="text-align: center">We are working around the clock to bring you a phenomenal open
+                        source
+                        search engine!
+                        <br><br>How excited are you to use our service?
+                      </p>
+
+                      <div class="centerContainer">
+                        <paper-card id="high-card"
+                                    elevation="3"
+                                    class="white paper-card-button"
+                                    style="margin-right:4px; width: 100%"
+                                    value="high"
+                                    name="excitement">
+                          <paper-ripple id="high-ripple"></paper-ripple>
+                          <div class="centerContainer"><img src="images/emoji/smiling.png"></div>
+                          <p style="text-align: center">I cant't wait</p>
+                        </paper-card>
+                        <paper-card id="mild-card"
+                                    elevation="3"
+                                    class="white paper-card-button"
+                                    style="margin-left:4px;
+                                  width: 100%"
+                                    value="mild"
+                                    name="excitement">
+                          <paper-ripple id=mild-ripple"></paper-ripple>
+                          <div class="centerContainer"><img src="images/emoji/thinking.png"></div>
+                          <p style="text-align: center">I'm kind of <br>interested</p>
+                        </paper-card>
                       </div>
                     </div>
-                  </div>
+                    <!-- add 1 line of space inbetween-->
+                    <div style="line-height: 30px;"></div>
+                    <div style="margin-top: 15px">
+                      <div class="layout vertical">
+                        <div style="margin-bottom: 10px;">
+                          <gold-email-input id="email-box" disabled auto-validate
+                                            error-message="please enter a valid email address"
+                                            label=""
+                                            placeholder="email address"
+                                            type="text"
+                                            name="email">
+                          </gold-email-input>
+                        </div>
+                        <div>
+                          <paper-button id="email-opt-button"
+                                        disabled
+                                        style="width: 100%"
+                                        class="custom green"
+                                        type="submit"
+                                        value="Send">
+                            Let me know when it's ready
+                          </paper-button>
+                        </div>
+                        <script>
+                          $(document).ready(function () {
+                            $('#high-card').click(function () {
+                              $('#high-card').attr({elevation: "1"});
+                              $('#high-card').css("background", "#dbdbdb");
+                              $('#high-card').removeClass("paper-card-button");
 
+                              $('#mild-card').attr({elevation: "3"});
+                              $('#mild-card').css("background", "#ffffff");
+
+                              $('#high-ripple').hide();
+                              $('#email-box').removeAttr('disabled');
+                              $('#email-opt-button').removeAttr('disabled');
+                            });
+                            $('#mild-card').click(function () {
+                              $('#mild-card').attr({elevation: "1"});
+                              $('#mild-card').css("background", "#dbdbdb");
+                              $('#mild-card').removeClass("paper-card-button");
+
+                              $('#high-card').attr({elevation: "3"});
+                              $('#high-card').css("background", "#ffffff");
+
+                              $('#high-ripple').show();
+                              $('#email-box').removeAttr('disabled');
+                              $('#email-opt-button').removeAttr('disabled');
+
+                            });
+                          });
+                        </script>
+
+                        <!--&lt;!&ndash; google app api &ndash;&gt;-->
+                        <!--POST https://script.googleapis.com/v1/scripts/{scriptId}:run-->
+                        <!--scriptId = "MuS9_iMCl8-7BsgZ-_P46X-PqdG-3tXjr";-->
+                      </div>
+                    </div>
+                  </form>
                 </paper-material>
               </div>
 
@@ -189,16 +262,13 @@
         </section>
 
         <section data-route="results">
-          <paper-toolbar class="scroll contain">
+          <paper-toolbar class="medium-tall scroll contain">
             <a data-route="home" href="{{baseUrl}}home">
               <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
             </a>
             <a data-route="home" href="{{baseUrl}}home">
               <p class="specialText">GitLinks</p>
             </a>
-            <!--<p class="companyName">-->
-            <!--GitLinks-->
-            <!--</p>-->
             <input class="topSearch"
                    type="search"
                    autocomplete="off"
