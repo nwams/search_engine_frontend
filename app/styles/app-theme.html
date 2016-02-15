@@ -72,11 +72,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     width: 100%;
   }
 
-  .paper-toolbar-home  {
+  .paper-toolbar-home {
     background: white;
-    border:1px solid #d2d6d9;
+    /*border:1px solid #d2d6d9;*/
   }
 
+  .center {
+    margin: auto;
+    width: 100%;
+  }
+
+  .headerLogo {
+    height: 50px;
+    margin-left: 90px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-bottom: -15px;
+  }
 
   .specialText {
     font-stretch: normal;
@@ -130,12 +144,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   .center {
     margin: auto;
     width: 100%;
-    /*margin-top: 240px;*/
   }
 
   .headerLogo {
     height: 50px;
-    /*margin-bottom: -15px;*/
     margin-left: 90px;
   }
 
@@ -144,26 +156,70 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     margin-bottom: -15px;
   }
 
-  .searchIcon {
-    height: 72px;
-    width: 72px;
+  .metrics {
+    font-stretch: normal;
+    font-size: 30px;
+    line-height: 50.6px;
     color: rgb(85, 85, 114);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -2.16px;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    ms-font-smoothing: antialiased;
   }
 
-  #block_container
-  {
-    text-align:center;
-    padding: 0 15%;
-    display: flex;
-    justify-content: center;
+  /*~~~~~~~~~~~~~~~~~~~~~~~~extra's delete later~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+  a:link {
+    text-decoration: none;
   }
 
-  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  /*styling for results page*/
+  .specialText {
+    font-stretch: normal;
+    font-size: 46px;
+    line-height: 50.6px;
+    /*color: rgb(85, 85, 114);*/
+    color: #169CEE;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -2.16px;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    ms-font-smoothing: antialiased;
+  }
+
+  .topSearch {
+    flex-grow: 1; /* default 0 */
+    font-size: 20px;
+    height: 80%;
+    border: 0px;
+    font-size: 30px;
+  }
+
+  input.topSearch:focus {
+    outline-width: 0;
+  }
+
+  .center {
+    margin: auto;
+    width: 100%;
+  }
+
+  .headerLogo {
+    height: 50px;
+    margin-left: 90px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-bottom: -15px;
+  }
 
   paper-toolbar.paper-toolbar-0 {
     background: white;
-    border:1px solid white;
+    border: 1px solid white;
     /*padding: 100px;*/
     padding-top: 30px;
   }
@@ -186,8 +242,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   .topSearch {
     flex-grow: 1; /* default 0 */
     font-size: 20px;
-    height:80%;
-    border:0px;
+    height: 80%;
+    border: 0px;
     font-size: 30px;
   }
 
@@ -198,6 +254,96 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   input.homepage-input:focus {
     outline-width: 0;
   }
+
+  .searchIcon {
+    height: 72px;
+    width: 72px;
+    color: rgb(85, 85, 114);
+  }
+
+  /* Small */
+  @media (max-width: 600px) {
+    .headerLogo {
+      margin-left: 0;
+    }
+  }
+
+  .searchIcon {
+    height: 72px;
+    width: 72px;
+    color: rgb(85, 85, 114);
+  }
+
+  #block_container {
+    text-align: center;
+    padding: 0 15%;
+    display: flex;
+    justify-content: center;
+  }
+
+  paper-card.white {
+    --paper-card-header-color: #fff;
+  }
+
+  paper-button.green {
+    background-color: #00db7c;
+    color: white;
+    margin: 0 0;
+  }
+
+  input.borders {
+    border-left: 1px solid #dbdbdb;
+    border-top: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .centerContainer {
+    @apply(--layout-horizontal);
+    @apply(--layout-center-justified);
+  }
+
+  paper-material {
+    border-radius: 2px;
+    height: 100%;
+    background: white;
+    width: calc(97.33% - 32px);
+    padding: 16px;
+  }
+
+  paper-toolbar.coolblue {
+    --paper-toolbar-background: #169cee;
+    --paper-toolbar-title: {
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+
+  .headerLogo {
+    height: 50px;
+    margin-left: 90px;
+  }
+
+  paper-scroll-header-panel {
+    height: 100%;
+  }
+
+  .specialText {
+    font-stretch: normal;
+    font-size: 46px;
+    line-height: 50.6px;
+    /*color: rgb(85, 85, 114);*/
+    color: #169CEE;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -2.16px;
+    text-rendering: optimizeLegibility;
+    text-align: center;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    ms-font-smoothing: antialiased;
+  }
+
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   #drawerToolbar {
@@ -217,11 +363,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   paper-menu {
     --paper-menu-selected-item: {
       color: var(--primary-color);
-    }
-
-    --paper-menu-focused-item-after: {
-      background: var(--primary-color);
-    }
+    } --paper-menu-focused-item-after: {
+    background: var(--primary-color);
+  }
   }
 
   paper-menu iron-icon {
@@ -259,7 +403,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     @apply(--layout-center);
   }
 
-  #mainToolbar .middle-container  {
+  #mainToolbar .middle-container {
     height: 100%;
     margin-left: 48px;
   }
@@ -315,7 +459,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     .headerLogo {
-    margin-left: 0;
+      margin-left: 0;
     }
 
     #mainToolbar.tall .app-name {
@@ -363,35 +507,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    */
 
   /* mobile-small */
-  @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { }
+  @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) {
+  }
+
   /* mobile-large */
-  @media all and (min-width: 361px) and (orientation: portrait) { }
+  @media all and (min-width: 361px) and (orientation: portrait) {
+  }
+
   /* mobile-small-landscape */
-  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) {
+  }
+
   /* mobile-large-landscape */
-  @media all and (min-width: 481px) and (orientation: landscape) { }
+  @media all and (min-width: 481px) and (orientation: landscape) {
+  }
+
   /* tablet-small-landscape */
-  @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { }
+  @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) {
+  }
+
   /* tablet-large-landscape */
-  @media all and (min-width: 961px) and (orientation: landscape) { }
+  @media all and (min-width: 961px) and (orientation: landscape) {
+  }
+
   /* tablet-small */
-  @media all and (min-width: 600px) and (orientation: portrait) { }
+  @media all and (min-width: 600px) and (orientation: portrait) {
+  }
+
   /* tablet-large */
-  @media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
+  @media all and (min-width: 601px) and (max-width: 840px) and (orientation: portrait) {
+  }
+
   /* desktop-x-small-landscape */
-  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+  @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) {
+  }
+
   /* desktop-x-small */
-  @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
+  @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) {
+  }
+
   /* desktop-small-landscape */
-  @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
+  @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) {
+  }
+
   /* desktop-small */
-  @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
+  @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) {
+  }
+
   /* desktop-medium-landscape */
-  @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+  @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) {
+  }
+
   /* desktop-medium */
-  @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+  @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) {
+  }
+
   /* desktop-large */
-  @media all and (min-width: 1281px) and (max-width: 1600px) { }
+  @media all and (min-width: 1281px) and (max-width: 1600px) {
+  }
+
   /* desktop-xlarge */
-  @media all and (min-width: 1601px) and (max-width: 1920px) { }
+  @media all and (min-width: 1601px) and (max-width: 1920px) {
+  }
 </style>

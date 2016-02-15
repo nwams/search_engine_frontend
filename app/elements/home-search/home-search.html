@@ -1,0 +1,57 @@
+<!--
+Home search bar
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+
+<dom-module id="home-search">
+  <template>
+    <!-- import the module  -->
+    <style include="shared-styles" is="custom-style">
+      /* remove underline from hyperlinks*/
+      a:link {
+        text-decoration: none;
+      }
+      .searchIcon {
+        height: 72px;
+        width: 72px;
+        color: rgb(85, 85, 114);
+      }
+      #block_container
+      {
+        text-align:center;
+        padding: 0 15%;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+
+    <div id="block_container">
+      <paper-input style="width: 100%;"
+                   placeholder="What are you looking for?"
+                   id="homeSearch"
+                   autofocus
+                   type="text"
+                   value="{{searchTerm:input}}">
+      </paper-input>
+      <!--<a data-route="working-on-it" href="{{baseUrl}}working-on-it" tabindex="-1">-->
+      <!--<paper-icon-button class="searchIcon" icon="search"></paper-icon-button>-->
+      <!--</a>-->
+
+      <a data-route="search-info" href$="{{baseUrl}}working-on-it/{{searchTerm}}" tabindex="-1">
+        <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
+      </a>
+    </div>
+  </template>
+
+  <script>
+
+    Polymer({
+      is: 'home-search'
+    });
+
+
+  </script>
+</dom-module>

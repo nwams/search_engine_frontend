@@ -57,257 +57,227 @@
 <body unresolved>
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
-
   <paper-scroll-header-panel main id="headerPanelMain" condenses keep-condensed-header>
-
     <!-- Main Content -->
     <div class="content">
-      <iron-pages attr-for-selected="data-route" selected="{{route}}">
-        <section data-route="home">
-          <paper-toolbar class="medium-tall scroll contain paper-toolbar-home">
-            <a data-route="home" href="{{baseUrl}}home">
-              <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
-            </a>
-            <a data-route="home" href="{{baseUrl}}home">
-              <p class="specialText">GitLinks</p>
-            </a>
-          </paper-toolbar>
-          <div elevation="0">
-            <div class="center">
-              <p style="padding-top: 10%;" class="subheadSection center">
-                A smart search engine for open source projects.
-              </p>
-            </div>
 
-            <div style="flex-direction: column;">
-            <div id="block_container">
-                <paper-input style="width: 100%;"
-                             placeholder="What are you looking for?"
-                             id="homeSearch" autofocus>
-                </paper-input>
-                <a data-route="results" href="{{baseUrl}}results" tabindex="-1">
-                  <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
-                </a>
-              <!--route to search results page-->
-              <!--<script>-->
-                <!--$("#homeSearch").keydown(function (event) {-->
-                  <!--// record the key-->
-                  <!--var theKey = event.which;-->
-                  <!--page('{{baseUrl}}results');-->
-                <!--});-->
-              <!--</script>-->
-            </div>
-            <div>
-              <p style="text-align: center">Don't be shy, detailed phrases are great, like: "Frontend framework with a permissive license"</p>
-            </div>
-            </div>
+      <iron-pages id="myPage" selected="0">
+        <div>
+          <section data-route="home">
+            <my-toolbar></my-toolbar>
+            <div elevation="0">
+              <div class="center">
+                <p style="padding-top: 5%;" class="subheadSection center">
+                  A smart search engine for open source projects.
+                </p>
+              </div>
 
-          </paper-material>
-          <div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">
-            <my-footer></my-footer>
-          </div>
-        </section>
+              <div style="flex-direction: column;">
+                <div id="block_container">
+                  <paper-input style="width: 100%;"
+                               placeholder="What are you looking for?"
+                               id="searchBox"
+                               autofocus
+                               type="text"
+                               value="{{searchTerm:input}}">
+                  </paper-input>
 
-        <section data-route="working-on-it">
-          <style is="custom-style">
-            paper-toolbar.coolblue {
-              --paper-toolbar-background: #169cee;
-              --paper-toolbar-title: {
-                font-style: italic;
-                font-weight: bold;
-              };
-            }
-          </style>
+                  <paper-icon-button id="searchButton" class="searchIcon" icon="search"></paper-icon-button>
+
+                </div>
+                <div style="text-align: center; color:#c5cae9">
+                  Don't be shy, detailed phrases are great, like: "Frontend framework with
+                  a permissive license"
+                </div>
+
+                <!--<div>-->
+                <!--<h2 style="text-align: center">-->
+                <!--<span class="metrics"><span class="starCount">39M<br> projects</span></span>-->
+                <!--&lt;!&ndash;<span class="subheadSection"><span class="forkCount"></span></span>&ndash;&gt;-->
+                <!--<span class="subheadSection"><span class="repoCount">49<br> sites</span></span>-->
+                <!--</h2>-->
+                <!--</div>-->
+              </div>
+            </div>
+            <div style="top: 50%; left: 50%; position: absolute;">
+              <paper-dialog modal
+                            style="background-color:white; position: relative; width: 600px; margin-left: -300px; height: 150px; margin-top: -200px;"
+                            id="dialog">
+                <h2><br>Thanks</h2>
+                <paper-dialog-scrollable>
+                  Your email has been recorded. We will be in touch.
+                </paper-dialog-scrollable>
+                <div class="buttons">
+                  <paper-button dialog-dismiss>Ok</paper-button>
+                </div>
+              </paper-dialog>
+            </div>
+            <div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">
+              <my-footer></my-footer>
+            </div>
+          </section>
+        </div>
+
+        <div>
           <paper-toolbar class="medium-tall coolblue scroll contain" style="padding-top: 30px">
-
-            <a data-route="home" href="{{baseUrl}}home">
-              <img src="images/logo_white.png" alt="GitLinks logo" class="headerLogo">
-            </a>
-            <a data-route="home" href="{{baseUrl}}home">
-              <p class="specialText" style="color: #fff;">GitLinks</p>
-            </a>
+            <a><img src="../../images/logo_white.png" alt="GitLinks logo" class="headerLogo"></a>
+            <a><p class="specialText" style="color: #fff;">GitLinks</p></a>
           </paper-toolbar>
-
           <paper-material elevation="0">
-
             <div class="centerContainer">
               <div>
                 <paper-material elevation="1">
-                  <style is="custom-style">
-                    paper-card.white {
-                      --paper-card-header-color: #fff;
-                    }
-
-                    .paper-card-button:hover {
-                      @apply(--shadow-elevation-12dp);
-                      cursor: pointer;
-                    }
-
-                    paper-button.green {
-                      background-color: #00db7c;
-                      /*background-color: var(--paper-green-a400);;*/
-                      color: white;
-                      margin: 0 0;
-                    }
-
-                    input.borders {
-                      /*border: 0;*/
-                      border-left: 1px solid #dbdbdb;
-                      border-top: 1px solid #dbdbdb;
-                      border-right: 1px solid #dbdbdb;
-                      border-top-left-radius: 5px;
-                      border-top-right-radius: 5px;
-                    }
-                  </style>
-                  <form id="foo">
-
+                  <form is="iron-form" id="form" on-submit="addItem">
                     <div style="width: 338px">
-                      <p style="text-align: center">We are working around the clock to bring you a phenomenal open
-                        source
-                        search engine!
-                        <br><br>How excited are you to use our service?
+                      <p style="text-align: center">GitLinks is coming soon.
+                        <br><br>We are working around the clock to bring you a phenomenal open source search engine!
                       </p>
-
-                      <div class="centerContainer">
-                        <paper-card id="high-card"
-                                    elevation="3"
-                                    class="white paper-card-button"
-                                    style="margin-right:4px; width: 100%"
-                                    value="high"
-                                    name="excitement">
-                          <paper-ripple id="high-ripple"></paper-ripple>
-                          <div class="centerContainer"><img src="images/emoji/smiling.png"></div>
-                          <p style="text-align: center">I cant't wait</p>
-                        </paper-card>
-                        <paper-card id="mild-card"
-                                    elevation="3"
-                                    class="white paper-card-button"
-                                    style="margin-left:4px;
-                                  width: 100%"
-                                    value="mild"
-                                    name="excitement">
-                          <paper-ripple id=mild-ripple"></paper-ripple>
-                          <div class="centerContainer"><img src="images/emoji/thinking.png"></div>
-                          <p style="text-align: center">I'm kind of <br>interested</p>
-                        </paper-card>
-                      </div>
                     </div>
                     <!-- add 1 line of space inbetween-->
                     <div style="line-height: 30px;"></div>
                     <div style="margin-top: 15px">
                       <div class="layout vertical">
                         <div style="margin-bottom: 10px;">
-                          <gold-email-input id="email-box" disabled auto-validate
+                          <gold-email-input is="iron-input" id="emailBox"
                                             error-message="please enter a valid email address"
-                                            label=""
-                                            placeholder="email address"
-                                            type="text"
-                                            name="email">
+                                            label="email address"
+                                            type="email"
+                                            required
+                                            name="email"
+                                            auto-validate>
                           </gold-email-input>
                         </div>
                         <div>
-                          <paper-button id="email-opt-button"
-                                        disabled
+                          <paper-button id="emailButton"
                                         style="width: 100%"
-                                        class="custom green"
-                                        type="submit"
-                                        value="Send">
-                            Let me know when it's ready
+                                        class="custom green">
+                            Stay Informed
                           </paper-button>
                         </div>
-                        <script>
-                          $(document).ready(function () {
-                            $('#high-card').click(function () {
-                              $('#high-card').attr({elevation: "1"});
-                              $('#high-card').css("background", "#dbdbdb");
-                              $('#high-card').removeClass("paper-card-button");
-
-                              $('#mild-card').attr({elevation: "3"});
-                              $('#mild-card').css("background", "#ffffff");
-
-                              $('#high-ripple').hide();
-                              $('#email-box').removeAttr('disabled');
-                              $('#email-opt-button').removeAttr('disabled');
-                            });
-                            $('#mild-card').click(function () {
-                              $('#mild-card').attr({elevation: "1"});
-                              $('#mild-card').css("background", "#dbdbdb");
-                              $('#mild-card').removeClass("paper-card-button");
-
-                              $('#high-card').attr({elevation: "3"});
-                              $('#high-card').css("background", "#ffffff");
-
-                              $('#high-ripple').show();
-                              $('#email-box').removeAttr('disabled');
-                              $('#email-opt-button').removeAttr('disabled');
-
-                            });
-                          });
-                        </script>
-
-                        <!--&lt;!&ndash; google app api &ndash;&gt;-->
-                        <!--POST https://script.googleapis.com/v1/scripts/{scriptId}:run-->
-                        <!--scriptId = "MuS9_iMCl8-7BsgZ-_P46X-PqdG-3tXjr";-->
                       </div>
                     </div>
                   </form>
                 </paper-material>
               </div>
-
             </div>
-
-
           </paper-material>
-          <my-footer></my-footer>
-        </section>
-
-        <section data-route="results">
-          <paper-toolbar class="medium-tall scroll contain">
-            <a data-route="home" href="{{baseUrl}}home">
-              <img src="images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
-            </a>
-            <a data-route="home" href="{{baseUrl}}home">
-              <p class="specialText">GitLinks</p>
-            </a>
-            <input class="topSearch"
-                   type="search"
-                   autocomplete="off"
-                   autofocus/>
-            <a data-route="results" href="{{baseUrl}}results" tabindex="-1">
-              <paper-icon-button class="searchIcon" icon="search"></paper-icon-button>
-            </a>
-          </paper-toolbar>
-          <paper-material elevation="0">
-            <h2 class="page-title">Stub stub stub</h2>
-            <p>Work in progress</p>
-            <a href$="{{baseUrl}}users/Addy">Lorem ipsum dolor sit amet</a><br>
-            <a href$="{{baseUrl}}users/Rob">consectetur adipiscing elit</a><br>
-            <a href$="{{baseUrl}}users/Chuck">In gravida arcu nec elementum iaculis</a><br>
-            <a href$="{{baseUrl}}users/Sam">Fusce at odio at purus </a>
-          </paper-material>
-          <my-footer></my-footer>
-        </section>
-
-
-        <section data-route="user-info">
-          <paper-material elevation="1">
-            <h2 class="page-title">User: {{params.name}}</h2>
-            <div>This is {{params.name}}'s section</div>
-          </paper-material>
-
-        </section>
-
-
-        <section data-route="animation">
-          <paper-material elevation="1">
-            <h2 class="page-title">Animation</h2>
-            <p>This is the contact section</p>
-
-            <my-animation></my-animation>
-
-          </paper-material>
-        </section>
+          <div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">
+            <my-footer></my-footer>
+          </div>
+        </div>
       </iron-pages>
+
+
+      <!--<script>-->
+      <!--document.addEventListener('click', function (e) {-->
+      <!--var pages = document.querySelector('iron-pages');-->
+      <!--pages.selectNext();-->
+      <!--});-->
+      <!--</script>-->
+
+      <script>
+        $('#searchButton').click(function () {
+          var pages = document.querySelector('iron-pages');
+          pages.selectNext();
+        });
+      </script>
+
+      <script>
+        $('#emailButton').click(function () {
+          var myFirebaseRef = new Firebase("https://mygitlinks.firebaseio.com/");
+          var landingPageRef = myFirebaseRef.child("landingPage");
+
+          var email = $('#emailBox').val();
+          var searchTerm = $('#searchBox').val();
+
+          if (email !== "") {
+            landingPageRef.push({email: email, searchTerm: searchTerm});
+            $('#emailBox').val('');
+            $('#searchBox').val('');
+
+            var pages = document.querySelector('iron-pages');
+            pages.selectPrevious();
+            $('#dialog').attr("opened", true);
+          }
+        })
+      </script>
+
+      <script>
+        $('#searchBox').keypress(function (e) {
+          if (e.keyCode === 13) {
+            var pages = document.querySelector('iron-pages');
+            pages.selectNext();
+          }
+        })
+      </script>
+
+
+      <!--<iron-pages attr-for-selected="data-route" selected="{{route}}">-->
+      <!--<section data-route="home">-->
+      <!--<my-toolbar></my-toolbar>-->
+      <!--<div elevation="0">-->
+      <!--<div class="center">-->
+      <!--<p style="padding-top: 10%;" class="subheadSection center">-->
+      <!--A smart search engine for open source projects.-->
+      <!--</p>-->
+      <!--</div>-->
+
+      <!--<div style="flex-direction: column;">-->
+      <!--<home-search></home-search>-->
+      <!--<div>-->
+      <!--<p style="text-align: center">Don't be shy, detailed phrases are great, like: "Frontend framework with a-->
+      <!--permissive license"</p>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">-->
+      <!--<my-footer></my-footer>-->
+      <!--</div>-->
+      <!--</section>-->
+
+      <!--<section data-route="working-on-it">-->
+      <!--&lt;!&ndash;<section data-route="search-info">&ndash;&gt;-->
+      <!--<coming-soon></coming-soon>-->
+      <!--<div style="position: fixed; bottom: 0px; overflow: visible; width: 100%;">-->
+      <!--<my-footer></my-footer>-->
+      <!--</div>-->
+      <!--</section>-->
+
+      <!--<section data-route="results">-->
+      <!--<my-toolbar></my-toolbar>-->
+      <!--<paper-material elevation="0">-->
+      <!--<h2 class="page-title">Stub stub stub</h2>-->
+      <!--<p>Work in progress</p>-->
+      <!--<input type="text" value="{{searchTerm::input}}">-->
+
+      <!--<a href$="{{baseUrl}}users/{{searchTerm}}">Lorem ipsum dolor sit amet</a><br>-->
+      <!--<a href$="{{baseUrl}}users/Rob">consectetur adipiscing elit</a><br>-->
+      <!--<a href$="{{baseUrl}}users/Chuck">In gravida arcu nec elementum iaculis</a><br>-->
+      <!--<a href$="{{baseUrl}}users/Sam">Fusce at odio at purus </a>-->
+      <!--</paper-material>-->
+      <!--<my-footer></my-footer>-->
+      <!--</section>-->
+
+
+      <!--<section data-route="user-info">-->
+      <!--<paper-material elevation="1">-->
+      <!--<h2 class="page-title">User: {{params.name}}</h2>-->
+      <!--<div>This is {{params.name}}'s section</div>-->
+      <!--</paper-material>-->
+      <!--</section>-->
+
+
+      <!--<section data-route="animation">-->
+      <!--<paper-material elevation="1">-->
+      <!--<h2 class="page-title">Animation</h2>-->
+      <!--<p>This is the contact section</p>-->
+
+      <!--<my-animation></my-animation>-->
+
+      <!--</paper-material>-->
+      <!--</section>-->
+
+      <!--</iron-pages>-->
     </div>
   </paper-scroll-header-panel>
 

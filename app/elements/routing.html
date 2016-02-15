@@ -66,6 +66,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'working-on-it';
     });
 
+//    page('/working-on-it/:phrase', function(data) {
+//      app.route = 'search-info';
+//      app.params = data.params;
+//    });
+
     // 404
     page('*', function() {
       app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';

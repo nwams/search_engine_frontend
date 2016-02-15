@@ -1,0 +1,158 @@
+<!--
+Coming soon landing page
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/typography.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/gold-email-input/gold-email-input.html">
+<link rel="import" href="../../bower_components/iron-checked-element-behavior/iron-checked-element-behavior.html">
+<link rel="import" href="../../bower_components/firebase/firebase.js">
+<link rel="import" href="../../bower_components/firebase-element/firebase.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+
+
+<dom-module id="coming-soon">
+  <template>
+    <!-- import the module  -->
+    <style include="shared-styles" is="custom-style">
+      paper-card.white {
+        --paper-card-header-color: #fff;
+      }
+
+      paper-button.green {
+        background-color: #00db7c;
+        color: white;
+        margin: 0 0;
+      }
+
+      input.borders {
+        border-left: 1px solid #dbdbdb;
+        border-top: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      .centerContainer {
+        @apply(--layout-horizontal);
+        @apply(--layout-center-justified);
+      }
+
+      paper-material {
+        border-radius: 2px;
+        height: 100%;
+        background: white;
+        width: calc(97.33% - 32px);
+        padding: 16px;
+      }
+
+      paper-toolbar.coolblue {
+        --paper-toolbar-background: #169cee;
+        --paper-toolbar-title: {
+          font-style: italic;
+          font-weight: bold;
+        }
+      }
+
+      .headerLogo {
+        height: 50px;
+        margin-left: 90px;
+      }
+
+      paper-scroll-header-panel {
+        height: 100%;
+      }
+
+      .specialText {
+        font-stretch: normal;
+        font-size: 46px;
+        line-height: 50.6px;
+        /*color: rgb(85, 85, 114);*/
+        color: #169CEE;
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: -2.16px;
+        text-rendering: optimizeLegibility;
+        text-align: center;
+        font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+        ms-font-smoothing: antialiased;
+      }
+
+      /* remove underline from hyperlinks*/
+      a:link {
+        text-decoration: none;
+      }
+    </style>
+
+    <paper-toolbar class="medium-tall coolblue scroll contain" style="padding-top: 30px">
+      <a data-route="home" href="{{baseUrl}}home">
+        <img src="../../images/logo_white.png" alt="GitLinks logo" class="headerLogo">
+      </a>
+      <a data-route="home" href="{{baseUrl}}home">
+        <p class="specialText" style="color: #fff;">GitLinks</p>
+      </a>
+    </paper-toolbar>
+
+    <paper-material elevation="0">
+      <div class="centerContainer">
+        <div>
+          <paper-material elevation="1">
+            <p> They searched for: {{params.phrase}}</p>
+            <form is="iron-form" id="form" on-submit="addItem">
+              <div style="width: 338px">
+                <p style="text-align: center">GitLinks is coming soon.
+                  <br><br>We are working around the clock to bring you a phenomenal open source search engine!
+                </p>
+              </div>
+              <!-- add 1 line of space inbetween-->
+              <div style="line-height: 30px;"></div>
+              <div style="margin-top: 15px">
+                <div class="layout vertical">
+                  <div style="margin-bottom: 10px;">
+                    <gold-email-input id="emailBox"
+                                      error-message="please enter a valid email address"
+                                      label="email address"
+                                      type="email"
+                                      required
+                                      name="email">
+                    </gold-email-input>
+                  </div>
+                  <div>
+                    <paper-button id="emailButton"
+                                  style="width: 100%"
+                                  class="custom green"
+                                  on-click="addItem">
+                      Stay Informed
+                    </paper-button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </paper-material>
+        </div>
+      </div>
+    </paper-material>
+  </template>
+
+  <script>
+
+    Polymer({
+      is: 'coming-soon',
+
+      addItem: function () {
+        var myFirebaseRef = new Firebase("https://mygitlinks.firebaseio.com/");
+        var landingPageRef = myFirebaseRef.child("landingPage");
+
+        var email = $('#emailBox').val();
+        if (email !== "") {
+          landingPageRef.push({email: email});
+          $('#emailBox').val('');
+        }
+      }
+    });
+
+
+  </script>
+</dom-module>
