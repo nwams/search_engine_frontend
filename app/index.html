@@ -66,16 +66,27 @@
           <section data-route="home">
             <my-toolbar></my-toolbar>
             <div elevation="0">
+              <div style="display: flex; justify-content: center;">
+                  <img src="../../images/logo_blue.png" alt="GitLinks logo" class="headerLogo">
+                  <p class="specialText">GitLinks</p>
+              </div>
               <div class="center">
                 <p style="padding-top: 5%;" class="subheadSection center">
                   A smart search engine for open source projects.
                 </p>
               </div>
 
+              <style is="custom-style">
+                paper-input {
+                  --paper-input-container-input: {
+                    font-size: 26px;
+                  };
+                }
+              </style>
               <div style="flex-direction: column;">
                 <div id="block_container">
                   <paper-input style="width: 100%;"
-                               placeholder="What are you looking for?"
+                               placeholder="Search 23,560,359 open source projects for?"
                                id="searchBox"
                                autofocus
                                type="text"
@@ -85,7 +96,7 @@
                   <paper-icon-button id="searchButton" class="searchIcon" icon="search"></paper-icon-button>
 
                 </div>
-                <div style="text-align: center; color:#c5cae9">
+                <div style="text-align: center; color:#c5cae9; font-size: 14px;">
                   Don't be shy, detailed phrases are great, like: "Frontend framework with
                   a permissive license"
                 </div>
@@ -124,13 +135,14 @@
             <a><p class="specialText" style="color: #fff;">GitLinks</p></a>
           </paper-toolbar>
           <paper-material elevation="0">
-            <div class="centerContainer">
+            <div class="centerContainer" style="margin-top: 3em;">
               <div>
                 <paper-material elevation="1">
                   <form is="iron-form" id="form" on-submit="addItem">
                     <div style="width: 338px">
-                      <p style="text-align: center">GitLinks is coming soon.
-                        <br><br>We are working around the clock to bring you a phenomenal open source search engine!
+                      <p style="text-align: center">
+                        <h2>GitLinks is coming soon.</h2>
+                        <br>We are working around the clock to bring you a phenomenal open source search engine!
                       </p>
                     </div>
                     <!-- add 1 line of space inbetween-->
@@ -139,11 +151,9 @@
                       <div class="layout vertical">
                         <div style="margin-bottom: 10px;">
                           <gold-email-input is="iron-input" id="emailBox"
-                                            error-message="please enter a valid email address"
-                                            label="email address"
-                                            type="email"
-                                            required
-                                            name="email"
+                                            error-message="Please enter a valid email address"
+                                            label="Email Address"
+                                            autofocus
                                             auto-validate>
                           </gold-email-input>
                         </div>
@@ -190,7 +200,9 @@
           var email = $('#emailBox').val();
           var searchTerm = $('#searchBox').val();
 
-          if (email !== "") {
+          var re = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
+          if (email !== "" && re.test(email)) {
             landingPageRef.push({email: email, searchTerm: searchTerm});
             $('#emailBox').val('');
             $('#searchBox').val('');
@@ -202,6 +214,7 @@
         })
       </script>
 
+      <!--allow enter key to trigger next page-->
       <script>
         $('#searchBox').keypress(function (e) {
           if (e.keyCode === 13) {
